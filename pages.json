@@ -1,0 +1,215 @@
+{
+	"pages": [{
+			"path": "pages/common/login/index",
+			"style": {
+				"navigationBarTitleText": "用户登录"
+			}
+		},
+		{
+			"path": "pages/common/register/index",
+			"style": {
+				"navigationBarTitleText": "用户注册"
+			}
+		},
+		{
+			"path": "pages/customer/index/index",
+			"style": {
+				"navigationBarTitleText": "商城首页"
+			}
+		},
+		{
+			"path": "pages/customer/product/list",
+			"style": {
+				"navigationBarTitleText": "商品列表"
+			}
+		},
+		{
+			"path": "pages/customer/product/detail",
+			"style": {
+				"navigationBarTitleText": "商品详情"
+			}
+		},
+		{
+			"path": "pages/customer/cart/index",
+			"style": {
+				"navigationBarTitleText": "我的购物车"
+			}
+		},
+		{
+			"path": "pages/customer/checkout/index", // 确保这是唯一的结算页条目
+			"style": {
+				"navigationBarTitleText": "确认订单"
+			}
+		},
+		{
+			"path": "pages/customer/order/list",
+			"style": {
+				"navigationBarTitleText": "我的全部订单"
+			}
+		},
+		{
+			"path": "pages/customer/order/detail",
+			"style": {
+				"navigationBarTitleText": "订单明细"
+			}
+		},
+		{
+			"path": "pages/customer/profile/index",
+			"style": {
+				"navigationBarTitleText": "个人中心"
+			}
+		},
+		{
+			"path": "pages/customer/search/index",
+			"style": {
+				"navigationBarTitleText": "商品搜索"
+			}
+		},
+		{
+			"path": "pages/admin/dashboard/index",
+			"style": {
+				"navigationBarTitleText": "系统管理后台"
+			}
+		},
+		{
+			"path": "pages/mall/dashboard/index",
+			"style": {
+				"navigationBarTitleText": "商场管理后台"
+			}
+		},
+		{
+			"path": "pages/mall/profile/index",
+			"style": {
+				"navigationBarTitleText": "商场资料"
+			}
+		},
+		{
+			"path": "pages/mall/merchant-management/list",
+			"style": {
+				"navigationBarTitleText": "入驻商户列表"
+			}
+		},
+		{
+			"path": "pages/mall/merchant-management/detail",
+			"style": {
+				"navigationBarTitleText": "入驻商户详情"
+			}
+		},
+		{
+			"path": "pages/mall/merchant-management/audit",
+			"style": {
+				"navigationBarTitleText": "商户入驻审核"
+			}
+		},
+		{
+			"path": "pages/mall/product-management/list",
+			"style": {
+				"navigationBarTitleText": "商场商品概览"
+			}
+		},
+		{
+			"path": "pages/mall/order-management/list",
+			"style": {
+				"navigationBarTitleText": "商场订单概览"
+			}
+		},
+		{
+			"path": "pages/mall/order-management/detail",
+			"style": {
+				"navigationBarTitleText": "商场订单详情"
+			}
+		},
+        // --- 商户端页面开始 ---
+        {
+            "path": "pages/merchant/selection/index",
+            "style": {
+                "navigationBarTitleText": "选择或创建商户"
+            }
+        },
+        {
+            "path": "pages/merchant/create/index",
+            "style": {
+                "navigationBarTitleText": "创建新商户"
+            }
+        },
+        {
+			"path": "pages/merchant/dashboard/index",
+			"style": {
+				"navigationBarTitleText": "商户工作台"
+			}
+		},
+        {
+            "path": "pages/merchant/profile/index",
+            "style": {
+                "navigationBarTitleText": "商户店铺资料"
+            }
+        },
+        {
+            "path": "pages/merchant/product-management/list",
+            "style": {
+                "navigationBarTitleText": "我的商品"
+            }
+        },
+        {
+            "path": "pages/merchant/product-management/edit",
+            "style": {
+                "navigationBarTitleText": "发布/编辑商品"
+            }
+        },
+        {
+            "path": "pages/merchant/order-management/list",
+            "style": {
+                "navigationBarTitleText": "我的订单"
+            }
+        },
+        {
+            "path": "pages/merchant/order-management/detail",
+            "style": {
+                "navigationBarTitleText": "订单处理"
+            }
+        },
+        {
+            "path": "pages/merchant/mall/index",
+            "style": {
+                "navigationBarTitleText": "我的商城关联"
+            }
+        }
+        // --- 商户端页面结束 ---
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "我的智能商城",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8",
+		"app-plus": {
+			"background": "#efeff4"
+		}
+	}
+	// tabBar 配置等...
+	// "tabBar": {
+	// 	"color": "#7A7E83",
+	// 	"selectedColor": "#3cc51f", // 或您的主题色
+	// 	"borderStyle": "black",
+	// 	"backgroundColor": "#ffffff",
+	// 	"list": [
+	// 		{
+	// 			"pagePath": "pages/customer/index/index",
+	// 			"iconPath": "static/tabbar/home.png", // 替换为您的图标路径
+	// 			"selectedIconPath": "static/tabbar/home_selected.png", // 替换为您的图标路径
+	// 			"text": "首页"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/customer/cart/index",
+	// 			"iconPath": "static/tabbar/cart.png", // 替换为您的图标路径
+	// 			"selectedIconPath": "static/tabbar/cart_selected.png", // 替换为您的图标路径
+	// 			"text": "购物车"
+	// 		},
+	// 		{
+	// 			"pagePath": "pages/customer/profile/index",
+	// 			"iconPath": "static/tabbar/profile.png", // 替换为您的图标路径
+	// 			"selectedIconPath": "static/tabbar/profile_selected.png", // 替换为您的图标路径
+	// 			"text": "我的"
+	// 		}
+	// 	]
+	// }
+}
