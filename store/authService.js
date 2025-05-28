@@ -48,7 +48,8 @@ async function login(credentials) {
         // 此处假设 loginApi 成功时，response.data 包含 { success: true, data: { 用户对象 }, message: "..." }
         // 或者如您代码所示，直接判断 statusCode，且用户对象在 response.data.data
         if (response && response.statusCode === 200 && response.data && response.data.data) {
-            state.userInfo = response.data.data;
+			console.log(response);
+            state.userInfo = response.data;
             state.isAuthenticated = true;
             persistUserInfo(state.userInfo); // 持久化用户信息和认证状态
             return Promise.resolve(state.userInfo); // 返回用户信息对象

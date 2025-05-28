@@ -153,7 +153,7 @@
         {
             "path": "pages/merchant/product-management/edit",
             "style": {
-                "navigationBarTitleText": "发布/编辑商品"
+                "navigationBarTitsleText": "发布/编辑商品"
             }
         },
         {
@@ -173,6 +173,13 @@
             "style": {
                 "navigationBarTitleText": "我的商城关联"
             }
+        },
+        {
+        	"path" : "pages/admin/user-management/list",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : "用户管理列表"
+        	}
         }
         // --- 商户端页面结束 ---
 	],

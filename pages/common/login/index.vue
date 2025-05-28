@@ -62,6 +62,7 @@ export default {
                 try {
                     const data = await authService.login(this.loginForm); // 使用 authService
 					//console.log(data);
+					console.log(data)
 					const user = data.data;
 					//console.log(user);
                     uni.showToast({ title: '登录成功', icon: 'success' });
