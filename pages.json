@@ -180,6 +180,13 @@
         	{
         		"navigationBarTitleText" : "用户管理列表"
         	}
+        },
+        {
+        	"path" : "pages/admin/user-management/edit",
+        	"style" : 
+        	{
+        		"navigationBarTitleText" : ""
+        	}
         }
         // --- 商户端页面结束 ---
 	],

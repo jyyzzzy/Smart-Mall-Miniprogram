@@ -128,7 +128,7 @@ export default {
         },
         goToLogin() {
             uni.navigateTo({
-                url: '/pages/common/login/login',
+                url: '/pages/common/login/index',
             });
         },
     },

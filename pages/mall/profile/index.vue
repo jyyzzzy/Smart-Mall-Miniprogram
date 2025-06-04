@@ -7,7 +7,7 @@
                 </uni-forms-item>
                 <uni-forms-item label="商场Logo" name="logo">
                     <image :src="formData.logo || '/static/logo.png'" mode="aspectFit" style="width: 80px; height: 80px; border: 1px solid #eee;"></image>
-                    <text style="font-size: 12px; color: #999; margin-left: 10px;">(上传功能暂未实现)</text>
+                    <text style="font-size: 12px; color: #999; margin-left: 10px;"></text>
                 </uni-forms-item>
                 <uni-forms-item label="商场简介" name="description">
                     <uni-easyinput type="textarea" v-model="formData.description" placeholder="请输入商场简介" />

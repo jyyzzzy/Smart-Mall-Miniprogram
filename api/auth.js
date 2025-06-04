@@ -7,7 +7,7 @@
  */
 export const loginApi = (credentials) => {
     // 登录操作应使用 POST 方法，凭证在请求体中传递
-    return uni.$http.get('/user/login', credentials);
+    return uni.$http.get('/auth/login', credentials);
 };
 
 /**
@@ -17,5 +17,5 @@ export const loginApi = (credentials) => {
  */
 export const registerApi = (userData) => { // 参数名改为 userData 更语义化
     // 注册操作使用 POST 方法，用户信息在请求体中传递，此部分是正确的
-    return uni.$http.post('/user/register', userData);
+    return uni.$http.post('/auth/register', userData);
 };

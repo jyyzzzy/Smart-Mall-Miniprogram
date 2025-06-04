@@ -5,9 +5,9 @@
  * GET /api/mall/dashboard
  * @returns {Promise} uni.$http 返回的 Promise 对象
  */
-export const getMallDashboardApi = () => {
+export const getMallDashboardApi = (mallId) => {
     // GET 请求，通常没有请求体，参数通过 URL 或查询字符串传递 (这里无参数)
-    return uni.$http.get('/api/mall/dashboard');
+    return uni.$http.get('/mall/${mallId}/stats');
 };
 
 /**
