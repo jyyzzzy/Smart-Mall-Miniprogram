@@ -32,104 +32,60 @@
     </view>
 </template>
 
-<script>
-import authService from '@/store/authService'; // 引入 AuthService
+<script setup>
+import { ref } from 'vue'
+import { useAuthStore } from '@/store/authService'
 
-export default {
-    data() {
-        return {
-            loginForm: {
-                username: '',
-                password: '',
-            },
-            loginRules: { // uni-forms 校验规则
-                username: {
-                    rules: [{ required: true, errorMessage: '请输入用户名' }],
-                },
-                password: {
-                    rules: [{ required: true, errorMessage: '请输入密码' }],
-                },
-            },
-            loading: false,
-            errorMessage: '',
-        };
-    },
-    methods: {
-        handleLogin() {
-            this.$refs.loginFormRef.validate().then(async (res) => {
-                this.loading = true;
-                this.errorMessage = '';
-                try {
-                    const response = await authService.login(this.loginForm); // 使用 authService
-                    // 假设 authService.login 内部处理了响应，并返回了包含用户信息的对象
-                    // 或者 authService.login 内部已经更新了 currentUser
+const auth = useAuthStore()
 
-                    // 直接从 authService 获取最新的 currentUser，确保数据是最新的
-                    const user = authService.currentUser.value.data;
+// 表单 & 校验
+const loginForm = ref({ username: '', password: '' })
+const loginRules = {
+  username: { rules: [{ required: true, errorMessage: '请输入用户名' }] },
+  password: { rules: [{ required: true, errorMessage: '请输入密码' }] }
+}
 
-                    if (user && user.role) { // 确保 user 和 role 存在
-                        uni.showToast({ title: '登录成功', icon: 'success' });
-                        this.navigateToDashboard(user); // 传递整个 user 对象或至少 role 和 mallId
-                    } else {
-                         // 如果 authService.login 内部未更新 currentUser，
-                         // 或者返回的 response.data 是 user 对象：
-                         // const loggedInUser = response.data; // 假设 response.data 是用户对象
-                         // if (loggedInUser && loggedInUser.role) {
-                         //    uni.showToast({ title: '登录成功', icon: 'success' });
-                         //    this.navigateToDashboard(loggedInUser);
-                         // } else {
-                         //    throw new Error('登录成功，但无法获取用户信息或角色');
-                         // }
-                        console.error("登录后未能获取有效的用户信息:", user);
-                        this.errorMessage = '登录成功，但用户信息不完整';
-                        uni.showToast({ title: this.errorMessage, icon: 'none' });
-                    }
-                } catch (error) {
-                    this.errorMessage = typeof error === 'string' ? error : (error.message || '登录失败，请稍后再试');
-                    uni.showToast({ title: this.errorMessage, icon: 'none' });
-                } finally {
-                    this.loading = false;
-                }
-            }).catch(err => {
-                // console.log('表单校验失败：', err);
-            });
-        },
-        navigateToDashboard(user) { // 接收 user 对象
-            let url = '';
-            // 确保 authService 中 currentUser 已经更新并包含 mallId (如果角色是 'mall')
-            // 如果 mallId 需要作为路由参数传递（虽然下面仪表盘脚本未使用路由参数获取mallId）：
-            if (user.role === 'customer') {
-                url = '/pages/customer/index/index';
-            } else if (user.role === 'merchant') {
-                url = '/pages/merchant/dashboard/index';
-                // 可选: if (user.merchantId) url += `?merchantId=${user.merchantId}`;
-            } else if (user.role === 'admin') {
-                url = '/pages/admin/dashboard/index';
-            } else if (user.role === 'mall') {
-                url = '/pages/mall/dashboard/index';
-                // 如果需要通过路由参数传递 mallId (虽然当前仪表盘脚本未使用此方式)
-                // if (user.mallId) {
-                //     url += `?mallId=${user.mallId}`;
-                // } else {
-                //     console.warn("商场用户登录，但未找到 mallId");
-                //     uni.showToast({ title: '商场信息不完整，部分功能可能受限', icon: 'none' });
-                // }
-            }
-            console.log("导航至:", url, "用户信息:", user);
-            if (url) {
-                uni.reLaunch({ url });
-            } else {
-                uni.showToast({ title: '无法确定导航页面，角色未知', icon: 'none' });
-            }
-        },
-        goToRegister() {
-            uni.navigateTo({
-                url: '/pages/common/register/index',
-            });
-        },
-    },
-};
+const loading = ref(false)
+const errorMessage = ref('')
+const loginFormRef = ref(null)
+
+/* ---------------- 提交 ---------------- */
+const handleLogin = () => {
+  loginFormRef.value.validate().then(async () => {
+    loading.value = true
+    errorMessage.value = ''
+    try {
+      const user = await auth.login(loginForm.value)      // Pinia action
+      uni.showToast({ title: '登录成功', icon: 'success' })
+      navigateToDashboard(user)
+    } catch (e) {
+      errorMessage.value = e.message || '登录失败，请稍后再试'
+      uni.showToast({ title: errorMessage.value, icon: 'none' })
+    } finally {
+      loading.value = false
+    }
+  })
+}
+
+/* ---------------- 角色跳转 ---------------- */
+function navigateToDashboard (user) {
+  let url = ''
+  switch (user.role) {
+    case 'customer': url = '/pages/customer/index/index'; break
+    case 'merchant': url = '/pages/merchant/dashboard/index'; break
+    case 'admin'   : url = '/pages/admin/dashboard/index';    break
+    case 'mall'    : url = '/pages/mall/dashboard/index';     break
+    default        : uni.showToast({ title:'未知角色', icon:'none' })
+  }
+  if (url) uni.reLaunch({ url })
+}
+
+/* ---------------- 前往注册 ---------------- */
+function goToRegister () {
+  uni.navigateTo({ url: '/pages/common/register/index' })
+}
 </script>
+
 
 <style lang="scss" scoped>
 /* 与之前版本相同 */
